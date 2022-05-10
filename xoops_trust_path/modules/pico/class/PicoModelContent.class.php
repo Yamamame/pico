@@ -200,7 +200,7 @@ function getData4html( $process_body = false )
 		'votes_avg' => $this->data['votes_count'] ? $this->data['votes_sum'] / doubleval( $this->data['votes_count'] ) : 0 ,
 		'subject' => $myts->makeTboxData4Show( $this->data['subject'] , 1 , 1 ) ,
 		'body' => $this->data['body_cached'] ,
-		'tags_array' => $this->data['tags'] ? explode( ' ' , htmlspecialchars( $this->data['tags'] , ENT_QUOTES ) ) : array() ,
+		'tags_array' => $this->data['tags'] ? explode( ' ' , htmlspecialchars( $this->data['tags'] , ENT_QUOTES, _CHARSET ) ) : array() ,
 		'cat_title' => $myts->makeTboxData4Show( $cat_data['cat_title'] , 1 , 1 ) ,
 		'can_vote' => ( is_object( $GLOBALS['xoopsUser'] ) || $mod_config['guest_vote_interval'] ) ? true : false ,
 	) + $this->data ;
@@ -290,16 +290,16 @@ function getData4edit()
 	$cat_data = $this->categoryObj->getData() ;
 
 	$ret4edit = array(
-		'vpath' => htmlspecialchars( $this->data['vpath'] , ENT_QUOTES ) ,
-		'subject' => $this->data['approval'] == 0 && ! $this->data['visible'] ? htmlspecialchars( $this->data['subject_waiting'] , ENT_QUOTES ) : htmlspecialchars( $this->data['subject'] , ENT_QUOTES ) ,
-		'subject_waiting' => htmlspecialchars( $this->data['subject_waiting'] , ENT_QUOTES ) ,
-		'htmlheader' => htmlspecialchars( $this->data['htmlheader'] , ENT_QUOTES ) ,
-		'htmlheader_waiting' => htmlspecialchars( $this->data['htmlheader_waiting'] , ENT_QUOTES ) ,
-		'body' => htmlspecialchars( $this->data['body'] , ENT_QUOTES ) ,
-		'body_waiting' => htmlspecialchars( $this->data['body_waiting'] , ENT_QUOTES ) ,
-		'filters' => htmlspecialchars( $this->data['filters'] , ENT_QUOTES ) ,
+		'vpath' => htmlspecialchars( $this->data['vpath'] , ENT_QUOTES, _CHARSET ) ,
+		'subject' => $this->data['approval'] == 0 && ! $this->data['visible'] ? htmlspecialchars( $this->data['subject_waiting'] , ENT_QUOTES, _CHARSET ) : htmlspecialchars( $this->data['subject'] , ENT_QUOTES, _CHARSET ) ,
+		'subject_waiting' => htmlspecialchars( $this->data['subject_waiting'] , ENT_QUOTES, _CHARSET ) ,
+		'htmlheader' => htmlspecialchars( $this->data['htmlheader'] , ENT_QUOTES, _CHARSET ) ,
+		'htmlheader_waiting' => htmlspecialchars( $this->data['htmlheader_waiting'] , ENT_QUOTES, _CHARSET ) ,
+		'body' => htmlspecialchars( $this->data['body'] , ENT_QUOTES, _CHARSET ) ,
+		'body_waiting' => htmlspecialchars( $this->data['body_waiting'] , ENT_QUOTES, _CHARSET ) ,
+		'filters' => htmlspecialchars( $this->data['filters'] , ENT_QUOTES, _CHARSET ) ,
 		'filter_infos' => pico_main_get_filter_infos( $this->data['filters'] , $cat_data['isadminormod'] ) ,
-		'tags' => htmlspecialchars( $this->data['tags'] , ENT_QUOTES ) ,
+		'tags' => htmlspecialchars( $this->data['tags'] , ENT_QUOTES, _CHARSET ) ,
 		'modifier_uid' => is_object( $GLOBALS['xoopsUser'] ) ? $GLOBALS['xoopsUser']->getVar('uid') : 0 ,
 	) + $this->getData4html() ;
 

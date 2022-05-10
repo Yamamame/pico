@@ -168,9 +168,9 @@ function getData4edit()
 	}
 
 	$ret4edit = array(
-		'title' => htmlspecialchars( $this->data['cat_title'] , ENT_QUOTES ) ,
-		'vpath' => htmlspecialchars( $this->data['cat_vpath'] , ENT_QUOTES ) ,
-		'desc' => htmlspecialchars( $this->data['cat_desc'] , ENT_QUOTES ) ,
+		'title' => htmlspecialchars( $this->data['cat_title'] , ENT_QUOTES, _CHARSET ) ,
+		'vpath' => htmlspecialchars( $this->data['cat_vpath'] , ENT_QUOTES, _CHARSET ) ,
+		'desc' => htmlspecialchars( $this->data['cat_desc'] , ENT_QUOTES, _CHARSET ) ,
 		'options' => $options4edit ,
 		'children_count' => count( @$this->data['redundants']['subcattree_raw'] ) ,
 	) + $this->getData4html() ;

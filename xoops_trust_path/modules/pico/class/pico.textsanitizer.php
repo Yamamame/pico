@@ -30,7 +30,7 @@ class PicoTextSanitizer extends MyTextSanitizer
 	// a fix for original bad implementation
 	function &htmlSpecialChars($text, $forEdit = false)
 	{
-		$ret = htmlspecialchars( $text , ENT_QUOTES ) ;
+		$ret = htmlspecialchars( $text , ENT_QUOTES, _CHARSET ) ;
 		return $ret ;
 	}
 
